@@ -62,7 +62,7 @@ public class MultiLangDaemon implements Callable<Integer> {
 
     private static final Log LOG = LogFactory.getLog(MultiLangDaemon.class);
 
-    private Worker worker;
+    public Worker worker;
 
     /**
      * Constructor.
