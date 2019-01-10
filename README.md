@@ -1,3 +1,17 @@
+# Changes from the original branch:
+The multilang client does not work well with localstack. It has no way to use localhost as an endpoint, doesn't allow dummy credentials, and uses CBOR which localstack doesn't support. This allows setting the endpoints via properties, disables CBOR and adds a new credential provider, to use with localstack.
+New properties:
+* kinesisEndpoint: endpoint host (hostname:port) for Kinesis API
+* kinesisProtocol: protocol for Kinesis API (http or https)
+* dynamodbEndpoint: endpoint host (hostname:port) for DynamoDB API
+* dynamodbProtocol: protocol for DynamoDB API (http or https)
+* metricsLevel: level of CloudWatch metrics to report (e.g., SUMMARY or NONE)
+
+The AWSCredentialsProvider now allows the AlwaysSucceedCredentialsProvider
+
+If tests are causing issues while building, you can skip them using `mvn clean install -Dgpg.skip=true -DskipTests`
+
+
 # Amazon Kinesis Client Library for Java
 [![Build Status](https://travis-ci.org/awslabs/amazon-kinesis-client.svg?branch=master)](https://travis-ci.org/awslabs/amazon-kinesis-client) ![BuildStatus](https://codebuild.us-west-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiaWo4bDYyUkpWaG9ZTy9zeFVoaVlWbEwxazdicDJLcmZwUUpFWVVBM0ZueEJSeFIzNkhURzdVbUd6WUZHcGNxa3BEUzNrL0I5Nzc4NE9rbXhvdEpNdlFRPSIsIml2UGFyYW1ldGVyU3BlYyI6IlZDaVZJSTM1QW95bFRTQnYiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=v1.x)
 
